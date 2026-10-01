@@ -1,0 +1,29 @@
+# --- Licensed WRDS data: never commit (this repo is public) ---
+data/
+*.parquet
+*.csv
+*.feather
+*.pkl
+*.pickle
+*.dta
+*.sas7bdat
+*.xlsx
+*.h5
+
+# --- Credentials ---
+.env
+.pgpass
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- OS / editor ---
+.DS_Store
+.vscode/
+.idea/

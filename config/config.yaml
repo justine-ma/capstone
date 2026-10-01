@@ -1,0 +1,30 @@
+# Pipeline configuration. Paths are relative to the repo root.
+
+sample:
+  ratings_start: 1996-01-01
+  ratings_end: 2017-02-28     # comp.adsprate ends February 2017. TODO: Capital IQ ratings would extend this
+  options_start: 1996-01-01   # OptionMetrics coverage begins 1996
+  options_end: 2017-12-31     # extra year keeps post-event windows for late rating changes
+
+universe:
+  gics_sector: "10"           # GICS sector code as a string; null = all sectors. TODO: widen?
+  exclude_financials: true    # drops GICS 40 and 60 (Real Estate was part of Financials until 2016)
+  include_mlps: null          # TODO open decision; null = keep and flag, false = drop, true = keep
+  include_coal: null          # TODO open decision; null = keep and flag, false = drop, true = keep
+
+linking:
+  # CRSP/Compustat Merged link history
+  ccm_table: crsp.ccmxpf_lnkhist
+  ccm_linktypes: [LC, LU]
+  ccm_linkprims: [P, C]
+  # OptionMetrics-CRSP link (WRDS linking suite). Score 1 is the best match; higher is worse.
+  optionm_link_table: wrdsapps.opcrsphist
+  optionm_max_score: 1
+
+options:
+  maturities: [30, 91, 182, 365]
+
+paths:
+  raw: data/raw
+  interim: data/interim
+  processed: data/processed

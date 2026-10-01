@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capstone"
+version = "0.1.0"
+description = "Option-implied skew and credit risk: OptionMetrics x S&P ratings panel"
+requires-python = ">=3.11"
+dependencies = [
+    "wrds>=3.5",
+    "pandas>=2.2,<2.3",
+    "pyarrow>=15",
+    "pyyaml>=6",
+    "python-dotenv>=1",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "ipykernel",
+    "nbconvert",
+    "nbformat",
+    "nbstripout",
+]
+
+[tool.setuptools]
+# The package directory is literally named `src` (imports are `from src import ...`).
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
